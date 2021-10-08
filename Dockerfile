@@ -3,6 +3,9 @@
 
 FROM python:3.8.8-slim-buster AS base
 
+COPY requirements.txt .
+RUN pip3 intall -r requirements.txt
+
 # Build ARGs
 ARG BOT_PROJECT="captcha-bot"
 ARG BOT_USER="nobody"
@@ -72,9 +75,6 @@ COPY --from=builder ${BOT_HOME_DIR} ${BOT_HOME_DIR}
 # Adjust privileges
 RUN chown -R "${BOT_USER}:${BOT_GROUP}" ${BOT_HOME_DIR} && \
     usermod -d ${BOT_HOME_DIR} ${BOT_USER}
-
-COPY requirements.txt .
-RUN pip3 intall -r requirements.txt
 
 # Set up to run as an unprivileged user
 USER ${BOT_USER}
