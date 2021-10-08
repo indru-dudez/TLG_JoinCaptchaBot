@@ -9,7 +9,7 @@ ARG BOT_USER="nobody"
 ARG BOT_GROUP="nogroup"
 ARG BOT_HOME_DIR="/srv"
 ARG APP_DIR="${BOT_HOME_DIR}/app"
-ARG GITHUB_URL="https://github.com/J-Rios/TLG_JoinCaptchaBot"
+ARG GITHUB_URL="https://github.com/indru-dudez/TLG_JoinCaptchaBot"
 
 # Export ARGs as ENV vars so they can be shared among steps
 ENV BOT_PROJECT="${BOT_PROJECT}" \
