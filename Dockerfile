@@ -73,6 +73,9 @@ COPY --from=builder ${BOT_HOME_DIR} ${BOT_HOME_DIR}
 RUN chown -R "${BOT_USER}:${BOT_GROUP}" ${BOT_HOME_DIR} && \
     usermod -d ${BOT_HOME_DIR} ${BOT_USER}
 
+COPY requirements.txt .
+RUN pip3 intall -r requirements.txt
+
 # Set up to run as an unprivileged user
 USER ${BOT_USER}
 WORKDIR ${APP_DIR}/sources
