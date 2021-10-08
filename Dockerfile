@@ -76,6 +76,4 @@ RUN chown -R "${BOT_USER}:${BOT_GROUP}" ${BOT_HOME_DIR} && \
 # Set up to run as an unprivileged user
 USER ${BOT_USER}
 WORKDIR ${APP_DIR}/sources
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
 CMD ["./entrypoint.sh"]
