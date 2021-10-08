@@ -3,9 +3,6 @@
 
 FROM python:3.8.8-slim-buster AS base
 
-COPY requirements.txt .
-RUN pip3 intall -r requirements.txt
-
 # Build ARGs
 ARG BOT_PROJECT="captcha-bot"
 ARG BOT_USER="nobody"
@@ -79,4 +76,6 @@ RUN chown -R "${BOT_USER}:${BOT_GROUP}" ${BOT_HOME_DIR} && \
 # Set up to run as an unprivileged user
 USER ${BOT_USER}
 WORKDIR ${APP_DIR}/sources
+COPY requirements.txt ${APP_DIR}/sources
+RUN pip3 intall -r requirements.txt
 CMD ["./entrypoint.sh"]
